@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "764674319156",
+    "project_id": "ableflyerdatabase",
+    "storage_bucket": "ableflyerdatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:764674319156:android:29e3a1ffa5b1c09b19fb61",
+        "android_client_info": {
+          "package_name": "com.ableflyerstudios.gg_gg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "764674319156-3q2d6s8mftc8kq9rrmhb06isq3onvjj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiBFistjk7ELkuaODPimq1BfuJk__LAdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "764674319156-3q2d6s8mftc8kq9rrmhb06isq3onvjj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
