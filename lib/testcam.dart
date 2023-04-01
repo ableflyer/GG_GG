@@ -5,10 +5,10 @@ import 'dart:math' as math;
 import 'dart:typed_data';
 import 'package:image/image.dart' as imglib;
 
-class MovenetWidget extends StatelessWidget {
+class oyoCamera extends StatelessWidget {
   final List<CameraDescription> cameras;
 
-  MovenetWidget(this.cameras);
+  oyoCamera(this.cameras);
 
   @override
   Widget build(BuildContext context) {
