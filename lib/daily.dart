@@ -1,9 +1,38 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-Map players = {"Hello": 48, "Ableflyer": 80, "crazyman": 65, "gottoosilly": 100};
-Map sortplayer = Map.fromEntries(players.entries.toList()..sort((e1, e2) => e1.value.compareTo(e2.value)));
-Map leader = Map.fromEntries(sortplayer.entries.toList().reversed);
+
+
+Future<Map> leaderplayers() async {
+  Map players = {};
+
+  final usersQuery = await FirebaseFirestore.instance.collection("Users").get();
+  final userDocs = usersQuery.docs;
+
+  for (final userDoc in userDocs) {
+    final ggDocs = await FirebaseFirestore.instance
+        .collection("Users")
+        .doc(userDoc.id)
+        .collection("GG.GG")
+        .get();
+
+    for (final ggDoc in ggDocs.docs) {
+      if(ggDoc.data()["Level"] != null) {
+        players[userDoc.data()["name"]] = ggDoc.data()["Level"];
+      }
+    }
+  }
+
+  Map sortplayer = Map.fromEntries(players.entries.toList()
+    ..sort((e1, e2) => e1.value.compareTo(e2.value)));
+  Map leader = Map.fromEntries(sortplayer.entries.toList().reversed);
+  print(leader);
+  return leader;
+}
+
+
 class Level extends StatelessWidget {
   const Level({Key? key}) : super(key: key);
   @override
@@ -18,14 +47,21 @@ class Level extends StatelessWidget {
         Divider(),
         SizedBox(
           height: 420.h,
-          child: ListView.builder(
-            itemCount: leader.length,
-            itemBuilder: (BuildContext context, int index){
-              var player = leader.entries.toList()[index];
-              return ListTile(
-                leading: Text("${index+1}."),
-                title: Text(player.key),
-                trailing: Text(player.value.toString()),
+          child: FutureBuilder(
+            future: leaderplayers(),
+            builder: (BuildContext context, AsyncSnapshot snapshot){
+              return snapshot.hasData? ListView.builder(
+                itemCount: snapshot.data.length < 100? snapshot.data.length:100,
+                itemBuilder: (BuildContext context, int index){
+                  var player = snapshot.data.entries.toList()[index];
+                  return ListTile(
+                    leading: Text("${index+1}."),
+                    title: Text(player.key),
+                    trailing: Text(player.value.toString()),
+                  );
+                },
+              ):const SpinKitRotatingPlain(
+                color: Colors.black,
               );
             },
           ),

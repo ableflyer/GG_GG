@@ -157,7 +157,11 @@ class activate extends StatelessWidget {
                                     Row(
                                       crossAxisAlignment: CrossAxisAlignment.center,
                                       children: [
-                                        Icon(Icons.fitness_center, color: Colors.white, size: 48.sp,),
+                                        SizedBox(
+                                          child: Image.asset("assets/exercise.png", scale: 48.sp, fit: BoxFit.fill,color: Colors.white,),
+                                          height: 48.sp,
+                                          width: 48.sp,
+                                        ),
                                         SizedBox(width: 5.w,),
                                         Text(
                                           "250",
@@ -207,10 +211,10 @@ class activate extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Icon(
-                        Icons.fitness_center,
-                        color: Colors.black,
-                        size: 32.sp,
+                      SizedBox(
+                        child: Image.asset("assets/exercise.png", scale: 32.sp, fit: BoxFit.fill,),
+                        height: 32.sp,
+                        width: 32.sp,
                       ),
                       Text(
                         "999k",

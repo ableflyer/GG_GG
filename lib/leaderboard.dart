@@ -11,7 +11,7 @@ class leaderboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.black,
@@ -21,7 +21,7 @@ class leaderboard extends StatelessWidget {
           bottom: TabBar(
             tabs: [
               Container(height: 50.h, child: Center(child: Text("Level", style: TextStyle(color: Colors.white),))),
-              Container(height: 50.h, child: Center(child: Text("MMR", style: TextStyle(color: Colors.white))))
+              Container(height: 50.h, child: Center(child: Text("Streak Count", style: TextStyle(color: Colors.white),))),
             ],
           ),
         ),

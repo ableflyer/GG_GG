@@ -20,8 +20,8 @@ class _homeState extends State<home> {
   int index = 0;
   final screens = [
     play(),
-    wpass(),
-    shop(),
+    // wpass(),
+    // shop(),
     profile(),
     leaderboard()
   ];
@@ -33,23 +33,27 @@ class _homeState extends State<home> {
         return false;
       },
       child: Scaffold(
+        extendBody: true,
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
+            backgroundColor: Colors.black.withOpacity(0.7),
+            shadowColor: Colors.black,
             labelTextStyle: MaterialStateProperty.all(
-              TextStyle(fontSize: 10)
+              TextStyle(fontSize: 10, color: Colors.white)
             )
           ),
           child: NavigationBar(
+            backgroundColor: Colors.transparent,
             selectedIndex: index,
             onDestinationSelected: (index) => setState(() {
               this.index = index;
             }),
             destinations: [
-              NavigationDestination(icon: Icon(Icons.sports_esports), label: "Play"),
-              NavigationDestination(icon: Icon(Icons.military_tech), label: "W Pass"),
-              NavigationDestination(icon: Icon(Icons.shopping_bag), label: "Shop"),
-              NavigationDestination(icon: Icon(Icons.person), label: "You"),
-              NavigationDestination(icon: Icon(Icons.leaderboard), label: "Leaderboard"),
+              NavigationDestination(icon: Icon(Icons.sports_esports, color: Colors.white,), label: "Play"),
+              // NavigationDestination(icon: Icon(Icons.military_tech, color: Colors.white,), label: "W Pass"),
+              // NavigationDestination(icon: Icon(Icons.shopping_bag, color: Colors.white,), label: "Shop"),
+              NavigationDestination(icon: Icon(Icons.person, color: Colors.white,), label: "You"),
+              NavigationDestination(icon: Icon(Icons.leaderboard, color: Colors.white,), label: "Leaderboard"),
             ],
           ),
         ),

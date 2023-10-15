@@ -123,10 +123,10 @@ class shop extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Icon(
-                                        Icons.fitness_center,
-                                        color: Colors.black,
-                                        size: 32.sp,
+                                      SizedBox(
+                                        child: Image.asset("assets/exercise.png", scale: 32.sp, fit: BoxFit.fill,),
+                                        height: 32.sp,
+                                        width: 32.sp,
                                       ),
                                       Text(
                                         "1000"
@@ -145,7 +145,7 @@ class shop extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topLeft,
                         child: Text(
-                          "Weekly Pi shop",
+                          "Weekly Gold shop",
                           textAlign: TextAlign.start,
                           style: TextStyle(
                               color: Colors.white,
@@ -184,7 +184,7 @@ class shop extends StatelessWidget {
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
                                       SizedBox(
-                                          child: Image.asset("assets/pi.png", scale: 32.sp, fit: BoxFit.fill,),
+                                          child: Image.asset("assets/gold.png", scale: 32.sp, fit: BoxFit.fill,),
                                         height: 32.sp,
                                         width: 32.sp,
                                       ),
@@ -229,34 +229,39 @@ class shop extends StatelessWidget {
                             ),
                             Column(
                               children: [
-                                Container(
-                                  height: 38.h,
-                                  width: 144.w,
-                                  decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.all(Radius.circular(20))
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Icon(
-                                        Icons.fitness_center,
-                                        color: Colors.black,
-                                        size: 32.sp,
-                                      ),
-                                      Text(
-                                        "999k",
-                                        style: TextStyle(
-                                            fontSize: 20.sp
+                                GestureDetector(
+                                  child: Container(
+                                    height: 38.h,
+                                    width: 144.w,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.all(Radius.circular(20))
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                      children: [
+                                        SizedBox(
+                                          child: Image.asset("assets/exercise.png", scale: 32.sp, fit: BoxFit.fill,),
+                                          height: 32.sp,
+                                          width: 32.sp,
                                         ),
-                                      ),
-                                      Icon(
-                                        Icons.add,
-                                        color: Colors.black,
-                                        size: 32.sp,
-                                      )
-                                    ],
+                                        Text(
+                                          "999k",
+                                          style: TextStyle(
+                                              fontSize: 20.sp
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.add,
+                                          color: Colors.black,
+                                          size: 32.sp,
+                                        )
+                                      ],
+                                    ),
                                   ),
+                                  onTap: () {
+
+                                  },
                                 ),
                                 SizedBox(height: 5.h,),
                                 Container(
@@ -270,7 +275,7 @@ class shop extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
                                       SizedBox(
-                                          child: Image.asset("assets/pi.png", scale: 32.sp,),
+                                        child: Image.asset("assets/gold.png", scale: 32.sp, fit: BoxFit.fill,),
                                         height: 32.sp,
                                         width: 32.sp,
                                       ),

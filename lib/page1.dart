@@ -26,7 +26,7 @@ class page1 extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 18.sp
             ),),
-            Image.asset("assets/gg_new_logo.png", scale: 7.sp,),
+            Image.asset("assets/new_gg_logo.png", scale: 7.sp,),
           ],
         ),
       ),

@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -47,13 +47,19 @@ dependencies:
   firebase_storage: ^11.0.10
   image_picker: ^0.8.6+1
   camera: ^0.10.3
-  google_ml_kit: ^0.13.0
-  mediapipe: ^0.0.1
   permission_handler: ^10.2.0
-  tflite_flutter: ^0.9.0
-  tflite_flutter_helper: ^0.2.1
-  flutter_tflite: ^1.0.1
-  tflite: ^1.1.2
+  path_provider: ^2.0.14
+  body_detection: ^0.0.3
+  flutter_bounce: ^1.1.0
+  just_audio: ^0.9.34
+  soundpool: ^2.4.1
+  gradient_borders: ^1.0.0
+  flutter_offline: ^2.1.0
+  text_scroll: ^0.2.0
+  flutter_webrtc: ^0.9.37
+  flutter_spinkit: ^5.2.0
+  flutter_datetime_picker: ^1.5.1
+  intl: ^0.17.0
 
 dev_dependencies:
   flutter_test:
@@ -96,6 +102,14 @@ flutter:
     - family: alexandria
       fonts:
       - asset: assets/abold.ttf
+    - family: proximity nova
+      fonts:
+        - asset: assets/pnova.otf
+        - asset: assets/pnova-it.otf
+          style: italic
+    - family: futura
+      fonts:
+        - asset: assets/futura.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

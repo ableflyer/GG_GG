@@ -1,5 +1,9 @@
+import 'dart:developer';
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,6 +17,61 @@ class _friendsState extends State<friends> {
 
   TextEditingController searchTEC = TextEditingController();
   bool search = false;
+
+  Future<List> friendlist() async{
+    List flist = [];
+    await FirebaseFirestore.instance.collection("Users").doc("${FirebaseAuth.instance.currentUser?.uid}").collection("Friends").get().then((value){
+      Map playerinfo = {};
+      value.docs.forEach((element) {
+        playerinfo["uid"] = element.data()["uid"];
+        playerinfo["username"] = element.data()["username"];
+        playerinfo["Card design"] = element.data()["Card design"];
+      });
+    });
+    return flist;
+  }
+  Future<Map> getPlayerData(String id) async {
+    Map x = {};
+    Map y = {};
+    String key = "";
+    await FirebaseFirestore.instance
+        .collection("Users")
+        .doc(id)
+        .collection("GG.GG")
+        .where("Card design")
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        x = element.data();
+        key = element.id;
+      });
+    });
+    await FirebaseFirestore.instance
+        .collection("Users")
+        .doc("${FirebaseAuth.instance.currentUser?.uid}")
+        .collection("GG.GG")
+        .get()
+        .then((value) {
+      value.docs.forEach((element) {
+        y = element.data();
+      });
+    });
+    log("y = ${y}");
+    log("key = $key");
+    log("x = ${x}");
+    return x;
+  }
+
+  Future<String> getImage(String cardString) async {
+    String x = "";
+    String url = await FirebaseStorage.instance
+        .ref()
+        .child("calling_cards/")
+        .child(cardString)
+        .getDownloadURL();
+    x = url;
+    return x;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +115,16 @@ class _friendsState extends State<friends> {
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              prefixIcon: Icon(
-                Icons.search,
-                color: Colors.black,
+              prefixIcon: IconButton(
+                onPressed: (){
+                  Navigator.pushNamed(context, "/search", arguments: {
+                    "user": searchTEC.text
+                  });
+                },
+                icon: Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),
