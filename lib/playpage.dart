@@ -149,7 +149,7 @@ class _playState extends State<play> {
           Widget child,
           ){
         final bool connected = connectivity != ConnectivityResult.none;
-        return FutureBuilder(
+        return connected? FutureBuilder(
           future: getPlayerData(),
           builder: (BuildContext context, AsyncSnapshot snapshot){
             return Scaffold(
@@ -475,6 +475,297 @@ class _playState extends State<play> {
                       ],
                     ),
                   ),
+                ],
+              ),
+              floatingActionButton: Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.only(
+                    left: 40.0,
+                    bottom: 70.sp
+                ),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Bounce(
+                      child: Container(
+                        width: 430.w,
+                        height: 50.h,
+                        decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0xFFFF1100), Colors.orange, Colors.yellow],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(20))
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Let's Play",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 30.sp,
+                                fontStyle: FontStyle.italic
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ),
+                      duration: Duration(milliseconds: 50),
+                      onPressed: () {
+                        showModalBottomSheet(
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (BuildContext context){
+                              return Scaffold(
+                                backgroundColor: Colors.black.withOpacity(0.7),
+                                appBar: AppBar(
+                                  title: Text("Choose gamemode", style: TextStyle(color: Colors.white),),
+                                  leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back, color: Colors.white,)),
+                                  backgroundColor: Colors.black.withOpacity(0.7),
+                                ),
+                                body: Center(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                                    child: Column(
+                                      children: [
+                                        Bounce(
+                                          duration: Duration(milliseconds: 50),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                            Navigator.pushNamed(context, "/beforeoyo");
+                                          },
+                                          child: Container(
+                                            width: 430.w,
+                                            height: 50.h,
+                                            decoration: const BoxDecoration(
+                                                color: Colors.transparent,
+                                                border: GradientBoxBorder(
+                                                    gradient: LinearGradient(
+                                                        colors: [Color(0xFFFF1100), Colors.orange, Colors.yellow]
+                                                    ),
+                                                    width: 4
+                                                ),
+                                                borderRadius: BorderRadius.all(Radius.circular(20))
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(horizontal: 20.h),
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 32.sp,
+                                                      width: 32.sp,
+                                                      child: ShaderMask(
+                                                          blendMode: BlendMode.srcIn,
+                                                          shaderCallback: (Rect bounds){
+                                                            return LinearGradient(
+                                                              colors: [Color(0xFFFF1100), Colors.orange, Colors.yellow],
+                                                            ).createShader(bounds);
+                                                          },
+                                                          child: Image.asset("assets/exercise.png", scale: 32.sp ,fit: BoxFit.fill,)
+                                                      ),
+                                                    ),
+                                                    ShaderMask(
+                                                      blendMode: BlendMode.srcIn,
+                                                      shaderCallback: (Rect bounds){
+                                                        return const LinearGradient(
+                                                          colors: [Color(0xFFFF1100), Colors.orange, Colors.yellow],
+                                                        ).createShader(bounds);
+                                                      },
+                                                      child: Text(
+                                                        "On your own",
+                                                        style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 22.sp,
+
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 32.sp,
+                                                      width: 32.sp,
+                                                      child: ShaderMask(
+                                                          blendMode: BlendMode.srcIn,
+                                                          shaderCallback: (Rect bounds){
+                                                            return LinearGradient(
+                                                              colors: [Color(0xFFFF1100), Colors.orange, Colors.yellow],
+                                                            ).createShader(bounds);
+                                                          },
+                                                          child: Image.asset("assets/exercise.png", scale: 32.sp ,fit: BoxFit.fill,)
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 20.h,),
+                                        Bounce(
+                                          duration: Duration(milliseconds: 50),
+                                          onPressed: () {
+                                            // Navigator.pop(context);
+                                            // Navigator.pushNamed(context, "/queue");
+                                          },
+                                          child: Container(
+                                            width: 430.w,
+                                            height: 50.h,
+                                            decoration: const BoxDecoration(
+                                                color: Colors.transparent,
+                                                border: GradientBoxBorder(
+                                                    gradient: LinearGradient(
+                                                        colors: [Colors.grey, Colors.grey, Colors.grey]
+                                                    ),
+                                                    width: 4
+                                                ),
+                                                borderRadius: BorderRadius.all(Radius.circular(20))
+                                            ),
+                                            child: Center(
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(horizontal: 20.h),
+                                                child: Row(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  children: [
+                                                    SizedBox(
+                                                      height: 32.sp,
+                                                      width: 32.sp,
+                                                      child: ShaderMask(
+                                                          blendMode: BlendMode.srcIn,
+                                                          shaderCallback: (Rect bounds){
+                                                            return LinearGradient(
+                                                              colors: [Colors.grey, Colors.grey, Colors.grey],
+                                                            ).createShader(bounds);
+                                                          },
+                                                          child: Image.asset("assets/swords.png", scale: 32.sp ,fit: BoxFit.fill,)
+                                                      ),
+                                                    ),
+                                                    ShaderMask(
+                                                      blendMode: BlendMode.srcIn,
+                                                      shaderCallback: (Rect bounds){
+                                                        return const LinearGradient(
+                                                          colors: [Colors.grey, Colors.grey, Colors.grey],
+                                                        ).createShader(bounds);
+                                                      },
+                                                      child: Text(
+                                                        "Coming soon",
+                                                        style: TextStyle(
+                                                          color: Colors.black,
+                                                          fontSize: 22.sp,
+
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    SizedBox(
+                                                      height: 32.sp,
+                                                      width: 32.sp,
+                                                      child: ShaderMask(
+                                                          blendMode: BlendMode.srcIn,
+                                                          shaderCallback: (Rect bounds){
+                                                            return LinearGradient(
+                                                              colors: [Colors.grey, Colors.grey, Colors.grey],
+                                                            ).createShader(bounds);
+                                                          },
+                                                          child: Image.asset("assets/swords.png", scale: 32.sp ,fit: BoxFit.fill,)
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                        );
+                      }
+                  ),
+                ),
+              ),
+            );},
+        ):FutureBuilder(
+          future: getPlayerData(),
+          builder: (BuildContext context, AsyncSnapshot snapshot){
+            return Scaffold(
+              body: Stack(
+                children: [
+                  Container(
+                    width: 430.w,
+                    height: 932.h,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Color(0xFFFF1100), Colors.orange, Colors.yellow],
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                        )
+                    ),
+                  ),
+                  Container(
+                    width: 430.w,
+                    height: 932.h,
+                    color: Colors.black.withOpacity(0.52),
+                  ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 150.h,
+                    width: 430.w,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Color(0xFFFF1100), Colors.orange, Colors.yellow]
+                        ),
+                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(20), bottomRight: Radius.circular(20))
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 40.sp, left: 20.sp, right: 20.sp),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                child: FittedBox(
+                                  child: Text(
+                                    Hello(connected),
+                                    style: TextStyle(
+                                        color: Colors.white,
+
+                                        fontSize: 30.sp
+                                    ),
+                                  ),
+                                  fit: BoxFit.fitWidth,
+                                ),
+                                width: 230.w,
+                              ),
+                              Text(
+                                "Welcome to GG.GG",
+                                style: TextStyle(
+                                    color: Colors.white,
+
+                                    fontSize: 22.sp
+                                ),
+                              ),
+                            ],
+                          ),
+                          IconButton(onPressed: () {}, icon: Icon(Icons.notifications, size: 32.sp, color: Colors.white,)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Icon(Icons.wifi_off, color: Colors.white, size: 64.sp,),
+                      Text("sign up or login to complete challenges, keep up with exercise, and check on some friends", style: TextStyle(color: Colors.white, fontSize: 24.sp,),textAlign: TextAlign.center,),
+                    ],
+                  )
+                ],
+              ),
                 ],
               ),
               floatingActionButton: Container(
